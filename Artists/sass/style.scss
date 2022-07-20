@@ -1,0 +1,615 @@
+
+
+// import partial files
+@import "./partials/variable";
+@import "./partials/mixin";
+@import "./partials/classes";
+
+// linked google fon links
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;500&family=Roboto:wght@100;300;400;500;700&display=swap");
+
+// reset & common code here
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  @include htmlProperty;
+}
+
+body {
+  max-width: 1200px;
+  margin: auto;
+  background-color: $white;
+  position: relative;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Oswald", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a,
+button,
+input[button],
+input[submit] {
+  transition: $linearTransition;
+}
+
+ul {
+  list-style-type: none;
+}
+
+section {
+  padding: 3rem 1rem;
+}
+
+// =====header element style here=====
+.header {
+  max-width: 1200px;
+  width: 100%;
+  height: 6rem;
+  padding: 1rem 8rem;
+  background-color: $aliceBlue;
+  box-shadow: $boxShadow;
+  @include flex(row, space-between, center);
+  position: fixed;
+  top: 0;
+  z-index: 100;
+
+  .header-logo {
+    text-align: center;
+    padding: 0 1rem;
+
+    img {
+      width: 4rem;
+      height: auto;
+      cursor: pointer;
+    }
+  }
+
+  .navbar {
+    padding: 0 1rem;
+
+    ul {
+      @include flex;
+
+      li {
+        text-align: center;
+
+        a {
+          font-size: 2rem;
+          text-transform: capitalize;
+          margin: 0 0.5rem;
+          font-weight: 500;
+          color: $black;
+
+          &:hover,
+          &.active {
+            color: $yellow;
+            border-bottom: 0.2rem solid $yellow;
+          }
+        }
+      }
+    }
+  }
+
+  #menu-bar {
+    font-size: 3rem;
+    padding: 1rem;
+    cursor: pointer;
+    display: none;
+  }
+}
+
+// =====header home section=====
+.home {
+  margin: 6rem 0;
+  @include grid;
+  position: relative;
+  z-index: 0;
+
+  .home-desc {
+    grid-column: 1 / 7;
+    text-align: center;
+
+    h1 {
+      @include titleText(5rem, 700);
+    }
+
+    p {
+      @include graphText(1.8rem);
+    }
+
+    input {
+      @extend .buttonStyle;
+      margin-top: 3rem;
+    }
+  }
+
+  .home-image {
+    grid-column: 7 / -1;
+    text-align: center;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -6rem;
+    background-color: $yellow;
+    border-radius: 3rem;
+    transform: rotate(-45deg);
+    height: 40rem;
+    width: 70rem;
+    z-index: -2;
+    animation: animate 1.5s linear 1;
+  }
+
+  &::before {
+    top: -7rem;
+    background-color: $white;
+    box-shadow: $boxShadow;
+    z-index: -1;
+  }
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(50deg) translateY(-40rem);
+  }
+}
+
+// =====header about section=====
+.about {
+  @include grid();
+  min-height: 50rem;
+
+  
+  .about-desc {
+    grid-column: 7 / -1;
+
+    h2 {
+      @include titleText(4rem, 700);
+    }
+
+    p {
+      @include graphText();
+    }
+
+    input {
+      margin: 2rem 3rem;
+      @extend .buttonStyle;
+    }
+  }
+}
+
+// =====header menu section=====
+.menu {
+  @include grid();
+
+  h2 {
+    grid-column: 1 / -1;
+    @extend .sectionHeading;
+  }
+
+  .catagory {
+    grid-column: 1 / -1;
+    padding: 2rem 0;
+    margin-bottom: 5rem;
+    border-top: 0.3rem dashed $someBlack;
+    border-bottom: 0.3rem dashed $someBlack;
+    text-align: center;
+
+    @include flex();
+    flex-wrap: wrap;
+
+    input {
+      @extend .buttonStyle;
+
+      &.active {
+        color: $white;
+        background-color: $yellow;
+      }
+    }
+  }
+
+  .catagory-img {
+    padding: 2rem;
+    grid-column: 1 / 7;
+    box-shadow: 0.2rem 0.4rem 1rem $graphColor;
+    border-radius: 1rem;
+    height: 100%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 1rem;
+    }
+  }
+
+  .menu-content {
+    grid-column: 7 / -1;
+    padding: 1rem;
+
+    .info {
+      text-align: left;
+
+      h3 {
+        padding-top: 1rem;
+        font-size: 2.4rem;
+        color: $black;
+        font-weight: bold;
+        text-transform: capitalize;
+
+        span {
+          color: $yellow;
+          padding-right: 1rem;
+        }
+      }
+
+      p {
+        @include graphText();
+        padding: 0 4rem 0;
+      }
+    }
+  }
+}
+
+// =====header popular section=====
+.popular {
+  background: {
+    image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
+      url(./../../images/popular-bg.jpg);
+    repeat: no-repeat;
+    size: content;
+    position: center;
+    attachment: fixed;
+  }
+
+  h2 {
+    margin-top: 3rem;
+    @extend .sectionHeading;
+  }
+
+  .popular-content {
+    text-align: center;
+    @include grid();
+    gap: 4rem;
+
+    .p-card {
+      padding: 1rem;
+      background-color: $aliceBlue;
+      box-shadow: $boxShadow;
+      border-radius: 1rem;
+      transition: $linearTransition;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0.1rem solid $yellow;
+      }
+
+      h4 {
+        @include titleText(3rem, 500);
+      }
+
+      .review {
+        text-align: center;
+
+        i {
+          color: $yellow;
+          font-size: 1.6rem;
+        }
+      }
+
+      .price {
+        padding: 1rem;
+        font-size: 2.6rem;
+      }
+
+      input {
+        @extend .buttonStyle;
+        margin-bottom: 1rem;
+      }
+
+      &:hover {
+        transform: scale(1.02);
+        box-shadow: 0.4rem 0.8rem 2rem $graphColor;
+      }
+
+      &:nth-child(odd) {
+        grid-column: 2 / 7;
+      }
+
+      &:nth-child(even) {
+        grid-column: 7 / 12;
+      }
+    }
+  }
+}
+
+// =====header gallery section=====
+.gallery {
+  h2 {
+    @extend .sectionHeading;
+  }
+
+  .gallery-content {
+    @include grid();
+    gap: 4rem;
+
+    .g-card {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: $linearTransition;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      h3 {
+        position: absolute;
+        top: 120%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        @include titleText(3rem, 700);
+        color: $white;
+        opacity: 0.5;
+        transition: $linearTransition;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -100%;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: $someBlack;
+        transition: $linearTransition;
+      }
+
+      &:hover h3 {
+        top: 50%;
+        opacity: 1;
+        transition-delay: 0.2s;
+      }
+
+      &:hover {
+        &::before {
+          top: 0;
+        }
+      }
+
+      &:nth-child(3n + 1) {
+        grid-column: 1 / 5;
+      }
+
+      &:nth-child(3n + 2) {
+        grid-column: 5 / 9;
+      }
+
+      &:nth-child(3n + 3) {
+        grid-column: 9 / -1;
+      }
+    }
+  }
+}
+
+// =====styling gallery section=====
+.order {
+  @include grid();
+
+  h2 {
+    grid-column: 1 / -1;
+    @extend .sectionHeading;
+  }
+
+  .order-content {
+    grid-column: 2 / 12;
+    box-shadow: $boxShadow;
+    border-radius: 1rem;
+
+    @include grid();
+    gap: 0;
+
+    .order-form {
+      grid-column: 1 / 7;
+      padding: 2rem;
+      text-align: center;
+
+      input,
+      textarea {
+        display: block;
+        width: 100%;
+        font-size: 1.8rem;
+        padding: 0.5rem 1rem;
+        margin: 2rem 0;
+        text-transform: inherit;
+        background-color: $lessBlack;
+
+        &::placeholder {
+          text-transform: capitalize;
+        }
+      }
+
+      textarea {
+        max-width: 100%;
+        resize: none;
+      }
+
+      button {
+        @extend .buttonStyle;
+      }
+    }
+
+    img {
+      grid-column: 7 / -1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+    }
+  }
+}
+
+// =====styling footer element=====
+.footer {
+  padding: 3rem 1rem;
+  background-color: $graphColor;
+  @include grid();
+  text-align: left;
+
+  .contact-info {
+    grid-column: 1 / 4;
+    padding: 1rem;
+    min-height: 32rem;
+
+    h4 {
+      @extend .footerTitle;
+    }
+
+    p {
+      padding: 1rem;
+      font-size: 1.4rem;
+
+      i {
+        font-size: 1.6rem;
+        color: $yellow;
+      }
+
+      span {
+        padding-left: 1rem;
+        color: $white;
+      }
+
+      &:first-of-type {
+        i {
+          width: 1.6rem;
+        }
+        span {
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+
+  .location {
+    grid-column: 4 / 7;
+    padding: 1rem;
+    min-height: 32rem;
+
+    h4 {
+      @extend .footerTitle;
+    }
+
+    ul {
+      padding: 1rem;
+
+      li {
+        padding: 1rem 0;
+
+        a {
+          @extend .footerLink;
+        }
+      }
+    }
+  }
+
+  .quick-links {
+    grid-column: 7 / 10;
+    padding: 1rem;
+    min-height: 32rem;
+
+    h4 {
+      @extend .footerTitle;
+    }
+
+    ul {
+      padding: 1rem;
+
+      li {
+        padding: 1rem 0;
+
+        a {
+          @extend .footerLink;
+        }
+      }
+    }
+  }
+
+  .follow-us {
+    grid-column: 10 / -1;
+    padding: 1rem;
+    min-height: 32rem;
+
+    h4 {
+      @extend .footerTitle;
+    }
+
+    ul {
+      padding: 1rem;
+
+      li {
+        padding: 1rem 0;
+
+        a {
+          @extend .footerLink;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    grid-column: 1 / -1;
+    border-top: 0.1rem solid $yellow;
+
+    p {
+      font-size: 1.6rem;
+      color: $white;
+      padding-top: 1rem;
+      text: {
+        transform: capitalize;
+        align: center;
+      }
+
+      span {
+        color: $yellow;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// happy coding!!!!
+// this project made by Fahad at 27th April, 2022.

@@ -1,0 +1,260 @@
+//   --﷽--
+
+// import partial files
+@import "./partials/variable";
+@import "./partials/mixin";
+@import "./partials/classes";
+
+// style for 991px or less
+@media screen and (max-width: 991px) {
+  .header {
+    padding: 1rem 5rem;
+  }
+
+  // styling menu section
+  .menu {
+    .catagory-img {
+      grid-column: 1 / 6;
+    }
+
+    .menu-content {
+      grid-column: 6 / -1;
+    }
+  }
+
+  // styling gallery section
+  .gallery {
+    .gallery-content {
+      gap: 3rem;
+
+      .g-card {
+        &:nth-child(2n + 1) {
+          grid-column: 1 / 7;
+        }
+
+        &:nth-child(2n + 2) {
+          grid-column: 7 / -1;
+        }
+      }
+    }
+  }
+
+  // styling order section
+  .order {
+    .order-content {
+      grid-column: 1 / -1;
+
+      .order-form {
+        grid-column: 1 / 8;
+      }
+
+      img {
+        grid-column: 8 / -1;
+      }
+    }
+  }
+
+  //styling footer element
+  .footer {
+    .contact-info {
+      grid-column: 2 / 7;
+    }
+
+    .location {
+      grid-column: 7 / 12;
+    }
+
+    .quick-links {
+      grid-column: 2 / 7;
+    }
+
+    .follow-us {
+      grid-column: 7 / 12;
+    }
+  }
+}
+
+// style for 768px or less
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 55%;
+  }
+
+  // styling header
+  .header {
+    padding: 1rem 3rem;
+
+    .navbar {
+      padding: 2rem 0;
+      display: block;
+      width: 40%;
+      height: calc(100vh - 6rem);
+      background-color: $aliceBlue;
+      position: absolute;
+      top: 6rem;
+      right: -100%;
+      z-index: 100;
+      border-bottom-left-radius: 50%;
+      box-shadow: $boxShadow;
+      transition: $linearTransition;
+
+      &.active {
+        right: 0;
+      }
+
+      ul {
+        margin-top: 3rem;
+        @include flex(column, center, start, 4rem);
+
+        li {
+          width: 100%;
+        }
+      }
+    }
+
+    #menu-bar {
+      display: block;
+      transition: $linearTransition;
+
+      &.active {
+        transform: rotate(90deg);
+        color: $yellow;
+      }
+    }
+  }
+
+  // styling home section
+  .home {
+    .home-desc {
+      grid-column: 1 / -1;
+
+      p {
+        text-align: center;
+        padding: 1rem 3rem;
+      }
+    }
+
+    .home-image {
+      grid-column: 1 / -1;
+
+      img {
+        width: 80%;
+      }
+    }
+
+    &::after,
+    &::before {
+      display: none;
+    }
+  }
+
+  // styling about section
+  .about {
+    .about-image {
+      grid-column: 1 / -1;
+    }
+
+    .about-desc {
+      grid-column: 1 / -1;
+      text-align: center;
+
+      p {
+        text-align: center;
+      }
+    }
+  }
+
+  // styling menu section
+  .menu {
+    .catagory-img {
+      grid-column: 1 / -1;
+    }
+
+    .menu-content {
+      grid-column: 1 / -1;
+    }
+  }
+
+  // styling poular section
+  .popular {
+    .popular-content {
+      .p-card {
+        &:nth-child(odd) {
+          grid-column: 2 / 12;
+        }
+
+        &:nth-child(even) {
+          grid-column: 2 / 12;
+        }
+      }
+    }
+  }
+
+  // styling gallery section
+  .gallery {
+    .gallery-content {
+      gap: 2rem;
+
+      .g-card {
+        &:nth-child(n) {
+          grid-column: 1 / -1;
+        }
+      }
+    }
+  }
+
+  // styling order section
+  .order {
+    .order-content {
+      grid-column: 1 / -1;
+
+      .order-form {
+        grid-column: 1 / -1;
+      }
+
+      img {
+        display: none;
+      }
+    }
+  }
+
+  //styling footer element
+  .footer {
+    .contact-info {
+      min-height: auto;
+      grid-column: 1 / -1;
+    }
+
+    .location {
+      min-height: auto;
+      grid-column: 1 / -1;
+    }
+
+    .quick-links {
+      min-height: auto;
+      grid-column: 1 / -1;
+    }
+
+    .follow-us {
+      min-height: auto;
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+// style for 450px or less
+@media screen and (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+
+  .header {
+    padding: 1rem 2rem;
+    .navbar {
+      width: 70%;
+    }
+  }
+}
+
+// happy coding!!!!
+// this project made by Fahad at 27th April, 2022.

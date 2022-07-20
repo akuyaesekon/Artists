@@ -1,0 +1,64 @@
+//   --﷽--
+
+//  mixin for html properties
+@mixin htmlProperty {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 1.4rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $someBlack;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $yellow;
+  }
+}
+
+// mixin for titleText
+@mixin titleText($size: 2rem, $weight: normal, $transform: capitalize) {
+  color: $black;
+  padding: 1rem;
+  font: {
+    size: $size;
+    weight: $weight;
+  }
+  text: {
+    transform: $transform;
+    align: center;
+  }
+}
+
+// mixin for graph text
+@mixin graphText($size: 1.6rem) {
+  color: $graphColor;
+  padding: 1rem;
+  font-size: $size;
+  line-height: 1.5;
+  text: {
+    transform: capitalize;
+    align: left;
+  }
+}
+
+// mixin for flex layout
+@mixin flex($direction: row, $justify: center, $align: center, $gap: 1rem) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+// mixin for grid layout
+@mixin grid() {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+

@@ -1,0 +1,57 @@
+//   --﷽--
+
+// style for button
+.buttonStyle {
+  padding: 0.5rem 3rem;
+  border: 0.2rem solid $yellow;
+  border-radius: 50rem;
+  font-size: 2rem;
+  color: $black;
+  cursor: pointer;
+  text-transform: capitalize;
+  background-color: transparent;
+  transition: $linearTransition;
+
+  &:hover {
+    color: $white;
+    background-color: $yellow;
+  }
+}
+
+// style for section heading
+.sectionHeading {
+  font-size: 4rem;
+  padding: 2rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: capitalize;
+  color: $black;
+
+  span {
+    padding: 0 1rem;
+    color: $yellow;
+  }
+}
+
+// footer content title
+.footerTitle {
+  font-size: 2.4rem;
+  color: $white;
+  font-weight: 500;
+  text-align: left;
+  text-transform: capitalize;
+  padding: 1rem;
+}
+
+// footer link
+.footerLink {
+  font-size: 1.4rem;
+  color: $white;
+  text-transform: capitalize;
+  transition: $linearTransition;
+
+  &:hover {
+    color: $yellow;
+  }
+}
+
